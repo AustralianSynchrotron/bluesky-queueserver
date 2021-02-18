@@ -439,6 +439,9 @@ def start_manager():
 
     config_manager["zmq_addr"] = args.zmq_addr
 
+    config_worker["redis_addr"] = args.redis_addr
+    config_manager["redis_addr"] = args.redis_addr
+
     wp = WatchdogProcess(config_worker=config_worker, config_manager=config_manager)
     try:
         wp.run()
