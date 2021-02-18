@@ -1323,7 +1323,7 @@ class RunEngineManager(Process):
         self._heartbeat_generator_task = asyncio.ensure_future(self._heartbeat_generator(), loop=self._loop)
         self._worker_status_task = asyncio.ensure_future(self._periodic_worker_state_request(), loop=self._loop)
 
-        self._plan_queue = PlanQueueOperations()
+        self._plan_queue = PlanQueueOperations(self._config['redis_addr'])
         await self._plan_queue.start()
 
         # Delete Redis entries (for testing and debugging)

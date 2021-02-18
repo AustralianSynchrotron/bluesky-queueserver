@@ -198,6 +198,13 @@ def start_manager():
         default="tcp://*:60615",
         help="The address of ZMQ server (control connection).",
     )
+    parser.add_argument(
+        "--redis-addr",
+        dest="redis_addr",
+        type=str,
+        default="localhost:6379",
+        help="The address of the redis server.",
+    )
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
